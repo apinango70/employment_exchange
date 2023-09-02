@@ -13,7 +13,8 @@
         <% if user_signed_in? %>
         <li class="nav-item">
           <%#= current_user.name %>
-          Usuario: <%= current_user.email %>
+          Usuario: <%= content_tag :span, current_user.name, class: 'margen' %>
+
         </li>
         <% end %>
           <% if user_signed_in? %>
