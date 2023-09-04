@@ -21,7 +21,7 @@ class JobPostingsController < ApplicationController
 
   # POST /job_postings or /job_postings.json
   def create
-    @job_posting = JobPosting.new(job_posting_params)
+    @job_posting = current_user.job_postings.build(job_posting_params)
 
     respond_to do |format|
       if @job_posting.save
@@ -34,6 +34,10 @@ class JobPostingsController < ApplicationController
     end
   end
 
+
+
+
+  
   # PATCH/PUT /job_postings/1 or /job_postings/1.json
   def update
     respond_to do |format|
@@ -65,6 +69,6 @@ class JobPostingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def job_posting_params
-      params.require(:job_posting).permit(:title, :department, :description, :user_id)
+      params.require(:job_posting).permit(:title, :department, :description)
     end
 end

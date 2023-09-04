@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
 
-<h1>Job postings</h1>
+  <h1>Job postings</h1>
 
-<div id="job_postings">
-  <% @job_postings.each do |job_posting| %>
-    <%= render job_posting %>
-    <p>
-      <%= link_to "Show this job posting", job_posting %>
-    </p>
-  <% end %>
+  <div id="job_postings">
+    <% @job_postings.each do |job_posting| %>
+      <%= render job_posting %>
+      <p>
+        <%= link_to "Show this job posting", job_posting %>
+      </p>
+      <hr>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <% if current_user %>
+      <%= link_to "New job posting", new_job_posting_path %>
+    <% else %>
+      <p>Only logged-in users can create new job postings</p>
+    <% end %>
 </div>
 
-<%= link_to "New job posting", new_job_posting_path %>
+
