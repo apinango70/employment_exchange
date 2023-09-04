@@ -2,10 +2,7 @@
   <p style="color: green"><%= notice %></p>
 
   <%= render @job_posting %>
-
-
-
-        
+  
   <% if user_signed_in? && current_user.admin? %>         
     <div>
       <%= link_to "Edit this job posting", edit_job_posting_path(@job_posting) %> |
