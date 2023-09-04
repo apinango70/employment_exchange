@@ -1,5 +1,6 @@
 class JobPostingsController < ApplicationController
-  before_action :set_job_posting, only: %i[ show edit update destroy ]
+  #before_action :set_job_posting, only: %i[ show edit update destroy ]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /job_postings or /job_postings.json
   def index
@@ -12,11 +13,16 @@ class JobPostingsController < ApplicationController
 
   # GET /job_postings/new
   def new
-    @job_posting = JobPosting.new
+    if current_user.admin?
+      @job_posting = JobPosting.new
+    else
+      redirect_to job_postings_path, alert: "Only administrators can create job postings."
+    end
   end
 
   # GET /job_postings/1/edit
   def edit
+    authorize_edit
   end
 
   # POST /job_postings or /job_postings.json
@@ -40,6 +46,7 @@ class JobPostingsController < ApplicationController
   
   # PATCH/PUT /job_postings/1 or /job_postings/1.json
   def update
+    authorize_edit
     respond_to do |format|
       if @job_posting.update(job_posting_params)
         format.html { redirect_to job_posting_url(@job_posting), notice: "Job posting was successfully updated." }
@@ -53,6 +60,7 @@ class JobPostingsController < ApplicationController
 
   # DELETE /job_postings/1 or /job_postings/1.json
   def destroy
+    authorize_edit
     @job_posting.destroy
 
     respond_to do |format|
@@ -63,10 +71,20 @@ class JobPostingsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_job
+      @job_posting = JobPosting.find(params[:id])
+    end
+    
     def set_job_posting
       @job_posting = JobPosting.find(params[:id])
     end
 
+    def authorize_edit
+      unless current_user.admin?
+        redirect_to jobs_path, alert: 'You do not have permission to perform this action.'
+      end
+    end
+    
     # Only allow a list of trusted parameters through.
     def job_posting_params
       params.require(:job_posting).permit(:title, :department, :description)
