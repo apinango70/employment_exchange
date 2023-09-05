@@ -10,11 +10,13 @@ class JobPostingsController < ApplicationController
   # GET /job_postings/1 or /job_postings/1.json
   def show
     if user_signed_in?
-      # El usuario está autenticado, puede ver el trabajo.
+      # Si el usuario está autenticado, puede ver el trabajo.
     else
-      # El usuario no está autenticado, redirigir a la página de inicio de sesión.
+      # El usuario si no está autenticado, se redirige a la página de inicio de sesión.
       redirect_to new_user_session_path, alert: "You need to sign in to view this job posting."
     end
+    @job_posting = JobPosting.find(params[:id])
+    @postulations = @job_posting.postulations
   end
 
   # GET /job_postings/new

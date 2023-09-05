@@ -12,7 +12,13 @@
       <% end %>
     <% end %>
 
-  <% if user_signed_in? && current_user.admin? %>         
+  <% if user_signed_in? && current_user.admin? %>     
+    <h2>Applicants:</h2>
+      <ul>
+        <% @job_posting.postulations.each do |postulation| %>
+          <li><%= postulation.user.name %></li>
+        <% end %>
+      </ul>    
     <div>
       <%= link_to "Edit this job posting", edit_job_posting_path(@job_posting) %> |
       <%= link_to "Back to job postings", job_postings_path %>
