@@ -17,9 +17,8 @@ puts " Creating 10 samples user."
                     password: password,
                     password_confirmation: password)
 end
+puts " Created 10 samples user."
 
-# Load Faker
-require 'faker'
 
 puts "Creating 10 job records with Faker-generated data"
 10.times do
@@ -30,3 +29,4 @@ puts "Creating 10 job records with Faker-generated data"
     user_id: 1 # Set the user_id as needed
   )
 end
+puts "Created 10 job records with Faker-generated data"
