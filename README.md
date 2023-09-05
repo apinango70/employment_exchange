@@ -1,6 +1,6 @@
 [# Proyecto KariPics : Blog para registro de fotos y comentarios.
 
-_Blog sobre fotos y comentarios de visitantes_
+_Sistema de postulación a empleos_
 
 ## Comenzando 🚀
 
