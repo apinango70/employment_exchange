@@ -1,4 +1,4 @@
-# Proyecto KariPics : Blog para registro de fotos y comentarios.
+# Employment exchange : Sistema para la administración de postulación interna de cargos.
 
 _Sistema de postulación a empleos_
 
