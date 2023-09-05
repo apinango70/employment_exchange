@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'postulations/new'
+  get 'postulations/create'
   resources :job_postings
   get 'pages/index'
   get 'job_postings/index'
@@ -9,9 +11,13 @@ Rails.application.routes.draw do
   root "job_postings#index"
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions', # Personaliza el controlador de sesiones
-    registrations: 'users/registrations', # Personaliza el controlador de registros
-    # Agrega otros controladores personalizados aquí si los has generado
+    sessions: 'users/sessions',  
+    registrations: 'users/registrations',  
+    
   }
   
+  # Defino las rutas para que los usuarios que no sean admin, puedan postular a empleos
+  resources :job_postings do
+    resources :postulations, only: [:new, :create]
+  end
 end

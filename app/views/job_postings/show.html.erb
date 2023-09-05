@@ -3,6 +3,15 @@
 
   <%= render @job_posting %>
   
+    <% unless current_user.admin? %>
+
+    <% if current_user.postulations.exists?(job_posting_id: @job_posting.id) %>
+    <p>You have already applied for this position!.</p>
+      <% else %>
+          <%= link_to "Apply for this position", new_job_posting_postulation_path(@job_posting), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
+
   <% if user_signed_in? && current_user.admin? %>         
     <div>
       <%= link_to "Edit this job posting", edit_job_posting_path(@job_posting) %> |

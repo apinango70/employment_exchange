@@ -1,0 +1,28 @@
+<div class="container">
+
+    <h1>Apply for this position</h1>
+
+    <%= form_with(model: [@job_posting, @postulation]) do |form| %>
+    <% if @postulation.errors.any? %>
+        <div class="alert alert-danger">
+        <h2><%= pluralize(@postulation.errors.count, "error") %> prohibited this postulation from being saved:</h2>
+
+        <ul>
+            <% @postulation.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+        <%= form.label :message, "Application message" %>
+        <%= form.text_area :message, class: 'form-control' %>
+    </div>
+
+    <div class="actions">
+        <%= form.submit "Send application", class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+
+</div>

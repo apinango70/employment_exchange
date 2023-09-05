@@ -1,6 +1,6 @@
 class JobPostingsController < ApplicationController
-  #before_action :set_job_posting, only: %i[ show edit update destroy ]
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_posting, only: %i[ show edit update destroy ]
+  #before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /job_postings or /job_postings.json
   def index
@@ -9,6 +9,12 @@ class JobPostingsController < ApplicationController
 
   # GET /job_postings/1 or /job_postings/1.json
   def show
+    if user_signed_in?
+      # El usuario está autenticado, puede ver el trabajo.
+    else
+      # El usuario no está autenticado, redirigir a la página de inicio de sesión.
+      redirect_to new_user_session_path, alert: "You need to sign in to view this job posting."
+    end
   end
 
   # GET /job_postings/new
