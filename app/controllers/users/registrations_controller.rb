@@ -60,17 +60,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  
-    private
-  
-    def sign_up_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :admin)
-    end
-  
-    def account_update_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :admin)
-    end
-  
 
-  
+    private
+
+    def sign_up_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :admin, :name)
+    end
+
+    def account_update_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :current_password, :admin, :name)
+    end
+
+
+
 end
