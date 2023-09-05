@@ -1,4 +1,4 @@
-[# Proyecto KariPics : Blog para registro de fotos y comentarios.
+# Proyecto KariPics : Blog para registro de fotos y comentarios.
 
 _Sistema de postulación a empleos_
 
