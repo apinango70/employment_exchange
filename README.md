@@ -139,4 +139,3 @@ Este proyecto está bajo la Licencia (MIT) - mira el archivo [LICENSE.md](LICENS
 ---
 
 Hecho con ❤️ por [apinango70](https://github.com/apinango70) 😊
-](https://github.com/apinango70/Proyecto_KariPics)https://github.com/apinango70/Proyecto_KariPics
