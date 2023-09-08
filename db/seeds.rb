@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-# Create a main sample user.
+puts " Creating 10 samples user."
 
 10.times do |n|
     name = Faker::Name.name
@@ -17,3 +17,16 @@
                     password: password,
                     password_confirmation: password)
 end
+puts " Created 10 samples user."
+
+
+puts "Creating 10 job records with Faker-generated data"
+10.times do
+  JobPosting.create(
+    title: Faker::Job.title,
+    department: Faker::Job.field,
+    description: Faker::Lorem.paragraph,
+    user_id: 1 # Set the user_id as needed
+  )
+end
+puts "Created 10 job records with Faker-generated data"
